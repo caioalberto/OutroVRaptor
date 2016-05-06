@@ -5,73 +5,71 @@
 <html>
 <head>
 <title>Cadastro de Produtos</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-<script type="text/javascript" src=".../jquery.validate.min.js"></script>
-<script
-	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<script type="text/javascript">
-	$('#validate-form').validate({
-		rules : {
-			"produto.nome" : {
-				required : true,
-				minlength : 3,
-			},
-			"produto.descricao" : {
-				required : true,
-				minlength : 5,
-			},
-			"produto.preco" : {
-				min : 0.0
-			}
-		}
-	});
-</script>
 </head>
 <body>
 	<div class="container">
-		<h1>Formulário de cadastro de produtos:</h1>
 		<form id="validate-form" class="form-horizontal" role="form"
-			action="<c:url value="/produtos/${produto.id }/edita"/>"
-			method="POST">
-			<div class="form-group">
-				<input type="hidden" name="produto.id" value="${produto.id }" /> <label
-					class="control-label col-sm-2" for="nome">Nome:</label>
-				<div class="col-sm-10">
-					<input type="text" class="form-control" name="produto.nome"
-						placeholder="Nome do produto" value="${produto.nome }"> <small
-						class="text-muted">Campo obrigatório</small>
+			action="<c:url value="/produtos/${produto.id }"/>" method="POST">
+			<fieldset>
+				<legend>Editar Produto:</legend>
+				<h2>Todos os campos são obrigatórios!</h2>
+				<div class="form-group">
+					<label class="control-label col-sm-2" id="nome" class="required"
+						minlength="3" for="nome">Nome:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" name="produto.nome"
+							placeholder="Nome do produto" value="${produto.nome }">
+					</div>
 				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-2" for="descricao">Descrição</label>
-				<div class="col-sm-10">
-					<textarea class="form-control" name="produto.descricao"
-						id="inputDescricao" placeholder="Descrição do produto">${produto.descricao }</textarea>
-					<small class="text-muted">Campo obrigatório</small>
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="descricao">Descrição</label>
+					<div class="col-sm-10">
+						<textarea class="form-control" name="produto.descricao"
+							id="descricao" class="required" minlength="5"
+							placeholder="Descrição do produto">${produto.descricao }</textarea>
+					</div>
 				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-2" for="descricao">Preço:</label>
-				<div class="col-sm-10">
-					<input type="number" class="form-control" name="produto.preco"
-						placeholder="Preço do produto" value="${produto.preco }">
-					<small class="text-muted">Campo obrigatório</small>
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="descricao">Preço:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" name="produto.preco"
+							placeholder="Preço do produto" min="0" value="${produto.preco }">
+					</div>
 				</div>
-			</div>
-			<div class="form-group">
-				<div class="col-sm-offset-2 col-sm-10">
-					<button type="submit" name="_method" value="PUT"
-						class="btn btn-default">
-						<span class="glyphicon glyphicon-floppy-disk"></span>Salvar
-						Alterações
-					</button>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" name="_method" value="PUT"
+							class="btn btn-primary btn-sm">
+							<span class="glyphicon glyphicon-floppy-disk"></span>Salvar
+							Produto
+						</button>
+					</div>
 				</div>
-			</div>
+			</fieldset>
 		</form>
+		<script type="text/javascript">
+            $.validator.setDefaults({
+                highlight : function(element, errorClass, validClass) {
+                    if (element.type === "radio") {
+                        this.findByName(element.name).addClass(errorClass).removeClass(validClass);
+                    } else {
+                        $(element).closest('.form-group').removeClass('has-success has-feedback').addClass('has-error has-feedback');
+                        $(element).closest('.form-group').find('span.glyphicon').remove();
+                        $(element).closest('.form-group').append('<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>');
+                    }
+                },
+                unhighlight : function(element, errorClass, validClass) {
+                    if (element.type === "radio") {
+                        this.findByName(element.name).removeClass(errorClass).addClass(validClass);
+                    } else {
+                        $(element).closest('.form-group').removeClass('has-error has-feedback').addClass('has-success has-feedback');
+                        $(element).closest('.form-group').find('span.glyphicon').remove();
+                        $(element).closest('.form-group').append('<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>');
+                    }
+                }
+            });
+            $('#validate-form').validate();
+        </script>
 	</div>
 </body>
 </html>

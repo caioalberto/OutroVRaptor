@@ -1,5 +1,8 @@
 package br.com.caioribeiro.produto.model;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -7,6 +10,8 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
+import org.joda.time.DateTime;
+import org.joda.time.LocalDate;
 
 @Entity
 public class Produto {
@@ -28,8 +33,8 @@ public class Produto {
 	private String descricao;
 
 	@NotNull(message = "Preço não deve estar vazio!")
-	private Double preco;
-
+	private BigDecimal preco;
+	
 	public Long getId() {
 		return id;
 	}
@@ -54,11 +59,11 @@ public class Produto {
 		this.descricao = descricao;
 	}
 
-	public Double getPreco() {
+	public BigDecimal getPreco() {
 		return preco;
 	}
 
-	public void setPreco(Double preco) {
+	public void setPreco(BigDecimal preco) {
 		this.preco = preco;
 	}
 

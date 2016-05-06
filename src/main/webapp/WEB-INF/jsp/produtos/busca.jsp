@@ -4,12 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Resultado da busca</title>
 </head>
 <body>
-	<h3>
-		Resultados da busca pelo nome <b>"${nome }"</b>
-	</h3>
-	<%@ include file="lista.jsp"%>
+		<%@ include file="lista.jsp"%>
+	</div>
 </body>
 </html>

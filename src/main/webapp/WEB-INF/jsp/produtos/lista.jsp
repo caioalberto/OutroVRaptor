@@ -24,32 +24,47 @@
 </head>
 <body>
 	<div class="container">
+		<c:if test="${not empty nome}">
+			<h3>
+				Resultados da busca pelo nome <b>"${nome}"</b>
+			</h3>
+		</c:if>
 		<h2>Lista de produtos:</h2>
-		<table class="table table-condensed">
+		<table class="table table-striped">
 			<thead>
 				<tr>
+					<th>Código</th>
 					<th>Nome</th>
 					<th>Descrição</th>
 					<th>Preco</th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody class="table-striped">
 				<c:forEach items="${produtoList}" var="produto">
 					<tr>
+						<td>${produto.id }</td>
 						<td>${produto.nome }</td>
 						<td>${produto.descricao }</td>
 						<td>${produto.preco }</td>
-						<td><a href="<c:url value="/produtos/${produto.id}/edita"/>"
-							class="btn btn-default btn-sm"> Editar <span
-								class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+						<td><a href="<c:url value="/produtos/${produto.id}"/>"
+							class="btn btn-primary btn-sm"> <span
+								class="glyphicon glyphicon-edit" aria-hidden="true"></span>Editar
 						</a></td>
 						<td><form action="<c:url value="/produtos/${produto.id}"/>"
 								method="POST">
-								<button class="btn btn-default btn-sm" name="_method"
+								<button class="btn btn-danger btn-sm" name="_method"
 									value="DELETE">
-									Remover<span class="glyphicon glyphicon-trash"></span>
+									<span class="glyphicon glyphicon-trash"></span>Remover
 								</button>
 							</form></td>
+						<td><form action="<c:url value="/carrinho"/>" method="POST">
+								<input type="hidden" name="item.produto.id"
+									value="${produto.id }" /> <input type="number"
+									class="quantidade" name="item.quantidade" value="1" />
+								<button type="submit" class="btn btn-success btn-sm">
+									<span class="glyphicon glyphicon-shopping-cart"></span>Comprar
+								</button>
+							</form>
 					</tr>
 				</c:forEach>
 			</tbody>

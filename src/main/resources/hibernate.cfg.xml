@@ -30,5 +30,6 @@
     
     <!-- mapeamento das entidades -->
     <mapping class="br.com.caioribeiro.produto.model.Produto"/>
+    <mapping class="br.com.caioribeiro.produto.model.Usuario"/>
   </session-factory>
 </hibernate-configuration>

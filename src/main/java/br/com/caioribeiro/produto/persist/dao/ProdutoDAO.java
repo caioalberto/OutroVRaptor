@@ -1,5 +1,7 @@
 package br.com.caioribeiro.produto.persist.dao;
 
+import static org.hibernate.criterion.Restrictions.ilike;
+
 import java.util.List;
 
 import org.hibernate.Session;
@@ -20,7 +22,7 @@ public class ProdutoDAO {
 	}
 
 	public void save(Produto produto) {
-		this.transaction = session.beginTransaction();
+		transaction = session.beginTransaction();
 		session.save(produto);
 		transaction.commit();
 		session.close();
@@ -48,8 +50,13 @@ public class ProdutoDAO {
 		session.close();
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Produto> search(String nome) {
-		return session.createCriteria(Produto.class).add(Restrictions.ilike("nome", nome, MatchMode.ANYWHERE)).list();
+		return session.createCriteria(Produto.class).add(ilike("nome", nome, MatchMode.ANYWHERE)).list();
+	}
+
+	public void reload(Produto produto) {
+		session.refresh(produto);
 	}
 
 }
