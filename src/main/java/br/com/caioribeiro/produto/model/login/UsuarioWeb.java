@@ -1,4 +1,4 @@
-package br.com.caioribeiro.produto.service;
+package br.com.caioribeiro.produto.model.login;
 
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.caelum.vraptor.ioc.SessionScoped;

@@ -11,22 +11,38 @@ import br.com.caioribeiro.produto.model.Item;
 import br.com.caioribeiro.produto.persist.dao.ProdutoDAO;
 
 /**
- * @author Caio Ribeiro
- *
+ * The Class CarrinhoController.
  */
 @Resource
 public class CarrinhoController {
 
+    /** The carrinho. */
     private final Carrinho carrinho;
+    
+    /** The dao. */
     private final ProdutoDAO dao;
+    
+    /** The result. */
     private final Result result;
 
+    /**
+     * Instantiates a new carrinho controller.
+     *
+     * @param carrinho the carrinho
+     * @param dao the dao
+     * @param result the result
+     */
     public CarrinhoController(Carrinho carrinho, ProdutoDAO dao, Result result) {
         this.carrinho = carrinho;
         this.dao = dao;
         this.result = result;
     }
 
+    /**
+     * Adiciona.
+     *
+     * @param item the item
+     */
     @Post
     @Path("/carrinho")
     public void adiciona(Item item) {
@@ -35,12 +51,20 @@ public class CarrinhoController {
         result.redirectTo(ProdutosController.class).lista();
     }
 
+    /**
+     * Visualiza.
+     */
     @Get
     @Path("/carrinho")
     public void visualiza() {
 
     }
     
+    /**
+     * Remove.
+     *
+     * @param indiceItem the indice item
+     */
     @Delete("carrinho/{indiceItem}")
     public void remove(int indiceItem) {
         carrinho.remove(indiceItem);

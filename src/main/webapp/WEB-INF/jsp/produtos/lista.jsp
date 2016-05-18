@@ -6,12 +6,6 @@
 <html>
 <head>
 <style type="text/css">
-.link {
-	text-decoration: none;
-	border: none;
-	background: none;
-	cursor: pointer;
-}
 </style>
 <title>Lista de Produtos</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -59,12 +53,12 @@
 							</form></td>
 						<td><form action="<c:url value="/carrinho"/>" method="POST">
 								<input type="hidden" name="item.produto.id"
-									value="${produto.id }" /> <input type="number"
+									value="${produto.id }" /> <input type="text"
 									class="quantidade" name="item.quantidade" value="1" />
 								<button type="submit" class="btn btn-success btn-sm">
 									<span class="glyphicon glyphicon-shopping-cart"></span>Comprar
 								</button>
-							</form>
+							</form></td>
 					</tr>
 				</c:forEach>
 			</tbody>

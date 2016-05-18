@@ -45,7 +45,7 @@
 						<td>
 							<form action="<c:url value="/carrinho/${s.index}"/>"
 								method="POST">
-								<button class="btn btn-default btn-sm" name="_method"
+								<button class="btn btn-danger btn-sm" name="_method"
 									value="DELETE">
 									<span class="glyphicon glyphicon-trash"></span>Remover do
 									Carrinho

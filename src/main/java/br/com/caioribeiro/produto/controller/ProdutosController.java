@@ -19,71 +19,71 @@ import br.com.caioribeiro.produto.service.Forbidden;
 @Resource
 public class ProdutosController {
 
-	private ProdutoDAO dao;
-	private final Result result;
-	private final Validator validator;
+    private ProdutoDAO dao;
+    private final Result result;
+    private final Validator validator;
 
-	public ProdutosController(ProdutoDAO dao, Result result, Validator validator) {
-		this.dao = dao;
-		this.result = result;
-		this.validator = validator;
-	}
+    public ProdutosController(ProdutoDAO dao, Result result, Validator validator) {
+        this.dao = dao;
+        this.result = result;
+        this.validator = validator;
+    }
 
-	@Forbidden
-	@Get("/produtos/novo")
-	public void formulario() {
-	}
+    @Forbidden
+    @Get("/produtos/novo")
+    public void formulario() {
+    }
 
-	@Forbidden
-	@Get("/produtos/{id}")
-	public Produto edita(Long id) {
-		return dao.load(id);
-	}
+    @Forbidden
+    @Get("/produtos/{id}")
+    public Produto edita(Long id) {
+        return dao.load(id);
+    }
 
-	@Forbidden
-	@Put("/produtos/{produto.id}")
-	public void altera(Produto produto) {
-		validator.validate(produto);
-		validator.onErrorRedirectTo(this).formulario();
+    @Forbidden
+    @Put("/produtos/{produto.id}")
+    public void altera(Produto produto) {
+        validator.validate(produto);
+        validator.onErrorRedirectTo(this).formulario();
 
-		dao.update(produto);
-		result.redirectTo(this).lista();
-	}
+        dao.update(produto);
+        result.redirectTo(this).lista();
+    }
 
-	@Forbidden
-	@Post("/produtos")
-	public void cadastra(final Produto produto) {
-		validator.validate(produto);
-		validator.onErrorRedirectTo(this).formulario();
+    @Forbidden
+    @Post("/produtos")
+    public void cadastra(final Produto produto) {
+        validator.validate(produto);
+        validator.onErrorRedirectTo(this).formulario();
 
-		dao.save(produto);
-		result.redirectTo(this).lista();
-	}
+        dao.save(produto);
+        result.redirectTo(this).lista();
+    }
 
-	@Forbidden
-	@Delete("/produtos/{id}")
-	public void remove(Long id) {
-		Produto produto = dao.load(id);
-		dao.delete(produto);
-		result.redirectTo(ProdutosController.class).lista();
-	}
+    @Forbidden
+    @Delete("/produtos/{id}")
+    public void remove(Long id) {
+        Produto produto = dao.load(id);
+        dao.delete(produto);
+        result.redirectTo(ProdutosController.class).lista();
+    }
 
-	@Get("/produtos")
-	public List<Produto> lista() {
-		return dao.listAll();
-	}
+    @Get("/produtos")
+    public List<Produto> lista() {
+        return dao.listAll();
+    }
 
-	
-	public List<Produto> busca(String nome) {
-		result.include("nome", nome);
-		return dao.search(nome);
-	}
+    public List<Produto> busca(String nome) {
+        result.include("nome", nome);
+        return dao.search(nome);
+    }
 
-	@Get("/produtos/busca.json")
-	public void buscaJson(String q) {
-		result.use(json()).withoutRoot().from(dao.search(q)).exclude("id", "descricao").serialize();
-	}
+    @Get("/produtos/busca.json")
+    public void buscaJson(String q) {
+        result.use(json()).withoutRoot().from(dao.search(q)).exclude("id", "descricao").serialize();
+    }
 
-	@Path("/home")
-	public void index(){}
+    @Path("/home")
+    public void index() {
+    }
 }

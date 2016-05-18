@@ -1,4 +1,4 @@
-package br.com.caioribeiro.produto.service;
+package br.com.caioribeiro.produto.model.login;
 
 import br.com.caelum.vraptor.InterceptionException;
 import br.com.caelum.vraptor.Intercepts;
@@ -7,6 +7,7 @@ import br.com.caelum.vraptor.core.InterceptorStack;
 import br.com.caelum.vraptor.interceptor.Interceptor;
 import br.com.caelum.vraptor.resource.ResourceMethod;
 import br.com.caioribeiro.produto.controller.UsuariosController;
+import br.com.caioribeiro.produto.service.Forbidden;
 
 @Intercepts
 public class AuthIntercept implements Interceptor {

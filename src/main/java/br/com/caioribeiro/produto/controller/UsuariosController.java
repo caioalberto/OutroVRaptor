@@ -10,8 +10,8 @@ import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
 import br.com.caelum.vraptor.validator.Message;
 import br.com.caioribeiro.produto.model.Usuario;
+import br.com.caioribeiro.produto.model.login.UsuarioWeb;
 import br.com.caioribeiro.produto.persist.dao.UsuarioDAO;
-import br.com.caioribeiro.produto.service.UsuarioWeb;
 
 @Resource
 public class UsuariosController {
