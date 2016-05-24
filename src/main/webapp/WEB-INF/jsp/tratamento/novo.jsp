@@ -12,16 +12,16 @@
 	<div class="container">
 		<div class="middle-form">
 			<form class="form-horizontal" role="form"
-				action="<c:url value="/nova-reserva"/>" method="POST">
+				action="<c:url value="/tratamento/novo"/>" method="POST">
 				<fieldset>
 					<legend>Marcar Horário</legend>
 
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="nome">Nome do
-							Procedimento:</label>
+							Tratamento:</label>
 						<div class="col-sm-10">
 							<select class="form-control" name="tratamento.produto.id">
-								<c:forEach items="${produtoList}" var="produto">
+								<c:forEach items="${produtos}" var="produto">
 									<option value="${produto.id}">${produto.nome}</option>
 								</c:forEach>
 							</select>
@@ -29,28 +29,23 @@
 					</div>
 
 					<div class="form-group">
-						<label class="control-label col-sm-2" for=data>Data: </label>
+						<label class="control-label col-sm-2"
+							for="funcionario responsavel">Funcionario Responsável:</label>
+						<div class="col-sm-10">
+							<select class="form-control" name="tratamento.responsavel.id">
+								<c:forEach items="${funcionarios}" var="funcionario">
+									<option value="${funcionario.id}">${funcionario.nome}</option>
+								</c:forEach>
+							</select>
+						</div>
+					</div> 
+
+					<div class="form-group">
+						<label class="control-label col-sm-2" for=data>Data:</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" name="tratamento.data">
 						</div>
 					</div>
-
-					<!-- <div class="form-group">
-						<label class="control-label col-sm-2" for="dia">Dia da
-							semana: </label>
-						<div class="col-sm-10">
-							<select class="form-control" name="tratamento.diaNome">
-								<option value="seg">Segunda-Feira</option>
-								<option value="ter">Terça-Feira</option>
-								<option value="qua">Quarta-Feira</option>
-								<option value="qui">Quinta-Feira</option>
-								<option value="sex">Sexta-Feira</option>
-								<option value="sab">Sábado</option>
-								<option value="dom">Domingo</option>
-							</select>
-						</div>
-					</div> -->
-
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="horaInicio">
 							Hora de início:</label>

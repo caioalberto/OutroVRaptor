@@ -29,8 +29,9 @@
 		<property name="format_sql">true</property>
 
 		<!-- mapeamento das entidades -->
-		<mapping class="br.com.caioribeiro.produto.model.Produto" />
-		<mapping class="br.com.caioribeiro.produto.model.Usuario" />
-		<mapping class="br.com.caioribeiro.produto.model.Tratamento" />
+		<mapping class="br.mackenzie.ec.lp2.websalao.model.Funcionario" />
+		<mapping class="br.mackenzie.ec.lp2.websalao.model.Produto" />
+		<mapping class="br.mackenzie.ec.lp2.websalao.model.Usuario" />
+		<mapping class="br.mackenzie.ec.lp2.websalao.model.Tratamento" />
 	</session-factory>
 </hibernate-configuration>

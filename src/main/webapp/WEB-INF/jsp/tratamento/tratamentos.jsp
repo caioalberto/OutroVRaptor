@@ -17,6 +17,7 @@
 					<th>Data</th>
 					<th>Hora Inicial</th>
 					<th>Hora Final</th>
+					<th>Funcionario Responsável</th>
 					<th>Valor Final</th>
 				</tr>
 			</thead>
@@ -27,6 +28,7 @@
 						<td>${tratamento.dataNome } - ${tratamento.diaNome }</td>
 						<td>${tratamento.horaInicio }</td>
 						<td>${tratamento.horaFim }</td>
+						<td>${tratamento.funcionarioResponsavel.nome}</td>
 						<td>${tratamento.produto.preco }</td>
 					</tr>
 			</c:forEach>

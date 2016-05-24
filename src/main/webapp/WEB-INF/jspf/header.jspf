@@ -47,7 +47,7 @@
 		<li class="active"><a href="#">Home</a></li>
 		<li><a href="<c:url value="/produtos/novo"/>"> Novo Produto </a></li>
 		<li><a href="<c:url value="/produtos"/>"> Tabela de Preços </a></li>
-		<li><a href="<c:url value="/nova-reserva"/>">Agenda</a></li>
+		<li><a href="<c:url value="/tratamento/novo"/>">Agenda</a></li>
 		<li>
 			<form class="navbar-form" role="search"
 				action="<c:url value="/produtos/busca/"/>">
@@ -76,10 +76,6 @@
 			<li><a href="<c:url value="/usuarios/novo"/>"><span
 					class="glyphicon glyphicon-user"></span> Cadastre-se</a></li>
 		</c:if>
-		<li><a href="<c:url value="/carrinho"/>" id="botao-carrinho">
-				<span class="glyphicon glyphicon-shopping-cart"></span>Carrinho<span
-				class="badge" style="background-color: #00ccff">${carrinho.totalItens}</span>
-		</a></li>
 	</ul>
 	<script type="text/javascript">
         $("#busca").puts("Nome do produto...");
